@@ -1,0 +1,6 @@
+[package]
+name = "nummer"
+version = "0.1.0"
+authors = ["Joel Depooter"]
+
+[dependencies]
