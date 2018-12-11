@@ -1,6 +1,6 @@
 use clap::ArgMatches;
 
-#[derive(Clone,Copy)]
+#[derive(Clone, Copy)]
 pub enum DataType {
     Float,
     Double,
@@ -27,13 +27,19 @@ impl Config {
     }
 }
 
-fn get_u64_value(matches: &ArgMatches, name: &str) -> Result<u64, ()> {
-    let s = matches.value_of(name).ok_or(())?;
-    return s.parse::<u64>().map_err(|_| ());
+fn get_u64_value(matches: &ArgMatches, name: &str) -> Result<u64, String> {
+    let s = matches
+        .value_of(name)
+        .ok_or("Cannot find a value for the '".to_string() + name + "' paramter.")?;
+    return s
+        .parse::<u64>()
+        .map_err(|_| "The '".to_string() + name + "' parameter must be a non-negative integer");
 }
 
-fn get_datatype(matches: &ArgMatches) -> Result<DataType, ()> {
-    let s = matches.value_of("data type").ok_or(())?;
+fn get_datatype(matches: &ArgMatches) -> Result<DataType, String> {
+    let s = matches
+        .value_of("data type")
+        .ok_or("Cannot find a value for the 'data type' parameter")?;
     match s {
         "float" => Ok(DataType::Float),
         "float32" => Ok(DataType::Float),
@@ -42,11 +48,11 @@ fn get_datatype(matches: &ArgMatches) -> Result<DataType, ()> {
         "uint8" => Ok(DataType::UInt8),
         "uint16" => Ok(DataType::UInt16),
         "uint32" => Ok(DataType::UInt32),
-        _ => Err(()),
+        _ => Err("Invalid data type value: '".to_string() + s + "'"),
     }
 }
 
-pub fn get_config(matches: &ArgMatches) -> Result<Config, ()> {
+pub fn get_config(matches: &ArgMatches) -> Result<Config, String> {
     let offset = get_u64_value(&matches, "offset")?;
     let count = get_u64_value(&matches, "count")?;
     let stride = get_u64_value(&matches, "stride")?;

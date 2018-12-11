@@ -45,7 +45,8 @@ fn main() {
 
     let config = match config::get_config(&matches) {
         Ok(c) => c,
-        Err(_) => {
+        Err(e) => {
+            eprintln!("{}", e);
             return;
         }
     };
