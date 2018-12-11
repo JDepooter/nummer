@@ -1,8 +1,11 @@
+extern crate byteorder;
 extern crate clap;
 
 use clap::{App, Arg};
+use std::fs::File;
 
 mod config;
+mod printer;
 
 fn main() {
     let matches = App::new("nummer")
@@ -40,5 +43,20 @@ fn main() {
                 .takes_value(true),
         ).get_matches();
 
-    let config = config::get_config(&matches);
+    let config = match config::get_config(&matches) {
+        Ok(c) => c,
+        Err(_) => {
+            return;
+        }
+    };
+
+    let input_file_path = matches.value_of("binary file").unwrap();
+    let file = File::open(input_file_path).expect("The file could not be found.");
+
+    match printer::print_values(file, config) {
+        Err(e) => {
+            eprintln!("{}", e);
+        }
+        _ => {}
+    }
 }
