@@ -42,6 +42,10 @@ fn print_single_value(reader: &mut Read, dt: DataType) -> std::io::Result<()> {
             let x = reader.read_u32::<LittleEndian>()?;
             print!("{}", x);
         }
+        DataType::UInt64 => {
+            let x = reader.read_u64::<LittleEndian>()?;
+            print!("{}", x);
+        }
     }
 
     return Ok(());

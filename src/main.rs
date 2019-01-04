@@ -17,31 +17,36 @@ fn main() {
                 .short("f")
                 .required(true)
                 .takes_value(true),
-        ).arg(
+        )
+        .arg(
             Arg::with_name("offset")
                 .short("o")
                 .long("offset")
                 .required(true)
                 .takes_value(true),
-        ).arg(
+        )
+        .arg(
             Arg::with_name("count")
                 .short("c")
                 .long("count")
                 .required(true)
                 .takes_value(true),
-        ).arg(
+        )
+        .arg(
             Arg::with_name("stride")
                 .short("s")
                 .long("stride")
                 .required(true)
                 .takes_value(true),
-        ).arg(
+        )
+        .arg(
             Arg::with_name("data type")
                 .short("t")
                 .long("data-type")
                 .required(true)
                 .takes_value(true),
-        ).get_matches();
+        )
+        .get_matches();
 
     let config = match config::get_config(&matches) {
         Ok(c) => c,

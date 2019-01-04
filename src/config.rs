@@ -7,6 +7,7 @@ pub enum DataType {
     UInt8,
     UInt16,
     UInt32,
+    UInt64,
 }
 
 pub struct Config {
@@ -48,6 +49,7 @@ fn get_datatype(matches: &ArgMatches) -> Result<DataType, String> {
         "uint8" => Ok(DataType::UInt8),
         "uint16" => Ok(DataType::UInt16),
         "uint32" => Ok(DataType::UInt32),
+        "uint64" => Ok(DataType::UInt64),
         _ => Err("Invalid data type value: '".to_string() + s + "'"),
     }
 }
