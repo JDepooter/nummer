@@ -30,9 +30,9 @@ checksum = "228047a76f468627ca71776ecdebd732a3423081fcf5125585bcd7c49886ce12"
 
 [[package]]
 name = "byteorder"
-version = "1.2.7"
+version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "94f88df23a25417badc922ab0f5716cc1330e87f71ddd9203b3a3ccd9cedf75d"
+checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
 name = "clap"

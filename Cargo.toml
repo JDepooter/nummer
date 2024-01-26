@@ -5,4 +5,4 @@ authors = ["Joel Depooter"]
 
 [dependencies]
 clap="2"
-byteorder = "1.2.7"
+byteorder = "1.5"
