@@ -59,10 +59,7 @@ fn main() {
     let input_file_path = matches.value_of("binary file").unwrap();
     let file = File::open(input_file_path).expect("The file could not be found.");
 
-    match printer::print_values(file, config) {
-        Err(e) => {
-            eprintln!("{}", e);
-        }
-        _ => {}
+    if let Err(e) = printer::print_values(file, config) {
+        eprintln!("{}", e);
     }
 }

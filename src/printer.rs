@@ -14,10 +14,10 @@ pub fn print_values(mut f: File, config: Config) -> std::io::Result<()> {
             print!(",");
             print_single_value(&mut reader, config.datatype)?;
         }
-        println!("");
+        println!();
     }
 
-    return Ok(());
+    Ok(())
 }
 
 fn print_single_value(reader: &mut dyn Read, dt: DataType) -> std::io::Result<()> {
@@ -48,5 +48,5 @@ fn print_single_value(reader: &mut dyn Read, dt: DataType) -> std::io::Result<()
         }
     }
 
-    return Ok(());
+    Ok(())
 }
