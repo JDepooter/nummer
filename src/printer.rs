@@ -20,7 +20,7 @@ pub fn print_values(mut f: File, config: Config) -> std::io::Result<()> {
     return Ok(());
 }
 
-fn print_single_value(reader: &mut Read, dt: DataType) -> std::io::Result<()> {
+fn print_single_value(reader: &mut dyn Read, dt: DataType) -> std::io::Result<()> {
     match dt {
         DataType::Float => {
             let x = reader.read_f32::<LittleEndian>()?;
